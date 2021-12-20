@@ -18,10 +18,6 @@
                 <div class="row form-group justify-content-center">
                     <button class="btn btn-outline-info col-sm-3" type="submit">送出新增</button>
                 </div>
-
-               </div>
-
-
         </form>
     </div>
 
