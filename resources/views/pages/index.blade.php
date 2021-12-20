@@ -19,12 +19,18 @@
                     <td class="col-sm-3">
                         <button class="btn btn-outline-success">修改</button>
                         <button class="btn btn-outline-danger"
-                                onclick=window.location.href={{route('delete')}}?delete_id={{$row->id}}>刪除</button>
+                                onclick=delete_data({{$row->id}})>刪除</button>
+{{--                                onclick=window.location.href={{route('delete_data',$row->id)}}>刪除</button>--}}
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
+<script>
+    function delete_data(id){
+        window.location.href = "{{route('delete_data')}}"+"?id="+id;
 
+    }
+</script>
 @endsection

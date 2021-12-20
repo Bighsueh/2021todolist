@@ -31,4 +31,13 @@ class TodoController extends Controller
         ]);
         return redirect()->route('index');
     }
+
+    public function delete_data(Request $request)
+    {
+        $id = $request->get('id');
+        DB::table('todos')
+            ->where('id', $id)
+            ->delete();
+        return redirect()->route('index');
+    }
 }

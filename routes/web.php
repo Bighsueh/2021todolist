@@ -15,8 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\TodoController::class, 'index'])
     ->name('index');
+//新增
 Route::get('/create', [\App\Http\Controllers\TodoController::class, 'get_create_page'])
     ->name('get_create_page');
 Route::post('/create', [\App\Http\Controllers\TodoController::class, 'store_create_data'])
     ->name('store_create_data');
+//刪除
+Route::get('/delete/', [\App\Http\Controllers\TodoController::class, 'delete_data'])
+    ->name('delete_data');
+
 
