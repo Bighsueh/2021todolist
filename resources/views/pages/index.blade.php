@@ -17,10 +17,10 @@
                     <td class="col-sm-3">{{$row->content}}</td>
                     <td class="col-sm-3">{{$row->remark}}</td>
                     <td class="col-sm-3">
-                        <button class="btn btn-outline-success">修改</button>
+                        <button class="btn btn-outline-success"
+                                onclick=edit_data({{$row->id}})>修改</button>
                         <button class="btn btn-outline-danger"
                                 onclick=delete_data({{$row->id}})>刪除</button>
-{{--                                onclick=window.location.href={{route('delete_data',$row->id)}}>刪除</button>--}}
                     </td>
                 </tr>
             @endforeach
@@ -31,6 +31,10 @@
     function delete_data(id){
         window.location.href = "{{route('delete_data')}}"+"?id="+id;
 
+    }
+
+    function edit_data(id) {
+        window.location.href = "{{route('get_edit_page')}}"+"?id="+id;
     }
 </script>
 @endsection

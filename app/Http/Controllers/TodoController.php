@@ -40,4 +40,30 @@ class TodoController extends Controller
             ->delete();
         return redirect()->route('index');
     }
+
+    public function get_edit_page(Request $request)
+    {
+        $id = $request->get('id');
+        $data = DB::table('todos')
+            ->where('id', $id)
+            ->first();
+        return view('pages.update',compact('data',$data));
+    }
+
+    public function store_edit_data(Request $request)
+    {
+        $id = $request->get('id');
+        $title = $request->get('title');
+        $content = $request->get('content');
+        $remark = $request->get('remark');
+
+        $test = DB::table('todos')
+            ->where('id', $id)
+            ->update([
+            'title' => $title,
+            'content' => $content,
+            'remark' => $remark,
+        ]);
+        return redirect()->route('index');
+    }
 }
