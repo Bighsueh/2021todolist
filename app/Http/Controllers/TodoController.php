@@ -14,12 +14,21 @@ class TodoController extends Controller
         return view('pages.index',compact('data',$data));
     }
 
-    public function create(){
+    public function get_create_page(){
         return view('pages.create');
     }
 
-    public function store(Request $request)
+    public function store_create_data (Request $request)
     {
-        dd($request);
+        $title = $request->get('title');
+        $content = $request->get('content');
+        $remark = $request->get('remark');
+
+        DB::table('todos')->insert([
+            'title' => $title,
+            'content' => $content,
+            'remark' => $remark,
+        ]);
+        return redirect()->route('index');
     }
 }
