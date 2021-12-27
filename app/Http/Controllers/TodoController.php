@@ -7,9 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class TodoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = DB::table('todos')->get();
+        $search_content = $request->get('search_content');
+        $data = DB::table('todos');
+        if ($search_content) {
+            $data->orwhere('title','like','%'. $search_content .'%');
+            $data->orwhere('content','like','%'. $search_content .'%');
+            $data->orwhere('remark','like','%'. $search_content .'%');
+        }
+            $data = $data->get();
 //        dd($data);
         return view('pages.index',compact('data',$data));
     }
